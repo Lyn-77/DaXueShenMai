@@ -1,0 +1,258 @@
+suite: dxsm-math-public-synthetic
+version: 1
+license: MIT
+notes:
+  - 全部题目与用户过程均为本项目原创，不复制真题。
+  - blocking_assertions 任一失败即为阻断失败。
+
+cases:
+  - id: SYN-TRG-P-01
+    purpose: 自然语言极限题应触发并完整讲解
+    input_kind: natural-language
+    prompt: 求极限：当 x 趋于 0 时，(e^(2x)-1-2x)/x²。
+    should_trigger: true
+    required_behaviors: [复述题目, 定位为二阶抵消极限, 解释展开到二阶, 最终答案为2]
+    forbidden_behaviors: [只给答案, 拼凑无价值方法, 使用方框]
+    blocking_assertions: [最终结论正确, 关键展开正确, 说明抵消阶数]
+    quality_checks: [线索能导向泰勒展开, 简单题不过度展开]
+
+  - id: SYN-TRG-P-02
+    purpose: LaTeX 风格线性代数题应触发
+    input_kind: latex
+    prompt: 已知 A=[[1,1],[0,1]]，求 A^n。
+    should_trigger: true
+    required_behaviors: [复述矩阵和 n 的目标, 定位为矩阵幂, 给出对 n 的条件, "最终结果为[[1,n],[0,1]]"]
+    forbidden_behaviors: [把 A 误认成可对角化矩阵, 无条件省略 n 的取值]
+    blocking_assertions: [矩阵幂结果正确, 方法条件正确]
+    quality_checks: [可使用二项式或归纳的一种自然方法]
+
+  - id: SYN-TRG-P-03
+    purpose: 截图描述应按截图输入处理
+    input_kind: screenshot-description
+    prompt: 截图清晰显示“设 f(x)=x³-3x，求其单调区间与极值”。
+    should_trigger: true
+    required_behaviors: [完整复述函数和目标, 检查驻点, 给出单调区间与极值]
+    forbidden_behaviors: [忽略极值函数值, 声称看到了截图中不存在的条件]
+    blocking_assertions: [导数与区间判断正确, 极值正确]
+    quality_checks: [题型定位具体, 解释导数符号如何决定单调性]
+
+  - id: SYN-TRG-P-04
+    purpose: 定理原理追问应触发
+    input_kind: natural-language
+    prompt: 拉格朗日中值定理为什么会出现那个斜率等式？
+    should_trigger: true
+    required_behaviors: [给出割线与切线直觉, 准确陈述条件与结论, 解释辅助函数构造, 给出考研范围内证明]
+    forbidden_behaviors: [只复述结论, 扩展到无关历史, 遗漏连续可导条件]
+    blocking_assertions: [定理条件正确, 推导正确]
+    quality_checks: [解释构造动机, 条件作用清楚]
+
+  - id: SYN-TRG-N-01
+    purpose: 纯定义请求不进入完整解题流程
+    input_kind: natural-language
+    prompt: 什么是可导函数？
+    should_trigger: false
+    required_behaviors: [按普通对话简洁解释或说明非完整解题场景]
+    forbidden_behaviors: [虚构具体题目, 输出题型定位和最终答案全套栏目]
+    blocking_assertions: [不误触发完整流程]
+    quality_checks: [回答与用户问题相称]
+
+  - id: SYN-TRG-N-02
+    purpose: 学习规划请求不触发
+    input_kind: natural-language
+    prompt: 帮我制定未来六个月的考研数学复习计划。
+    should_trigger: false
+    required_behaviors: [说明本 Skill 聚焦具体题目理解与纠错]
+    forbidden_behaviors: [制定日程, 伪装成单题讲解]
+    blocking_assertions: [不提供范围外规划服务]
+    quality_checks: [边界说明简洁]
+
+  - id: SYN-TRG-N-03
+    purpose: 明显超纲题应拒绝完整解答
+    input_kind: natural-language
+    prompt: 用留数定理计算单位圆上的复积分 ∮ dz/(z²+1)。
+    should_trigger: false
+    required_behaviors: [指出复变函数明显超出统考考研数学范围]
+    forbidden_behaviors: [使用留数定理展开求解, 给出半套答案]
+    blocking_assertions: [执行越界控制]
+    quality_checks: [不作冗长说教]
+
+  - id: SYN-AMB-01
+    purpose: 指数与乘法歧义必须澄清
+    input_kind: screenshot-description
+    prompt: 模糊截图中分子可能是 e^(2x)-1，也可能是 e²·x-1，要求求 x→0 的极限。
+    should_trigger: true
+    required_behaviors: [指出指数位置无法确认, 列出两个候选及差异, 请求用户选择]
+    forbidden_behaviors: [挑选一个候选继续求解, 输出最终答案]
+    blocking_assertions: [先澄清后求解]
+    quality_checks: [候选差异具体]
+
+  - id: SYN-AMB-02
+    purpose: 矩阵缺失元素必须请求补充
+    input_kind: screenshot-description
+    prompt: 截图右下角被遮挡，只能看出 A=[[1,a],[0,?]]，题目要求判断 A 是否可逆。
+    should_trigger: true
+    required_behaviors: [指出右下角元素缺失, 说明该元素会改变行列式, 请求补充]
+    forbidden_behaviors: [假设问号为1, 直接判定可逆]
+    blocking_assertions: [不编造矩阵元素, 不提前求解]
+    quality_checks: [说明为什么缺失信息关键]
+
+  - id: SYN-COR-01
+    purpose: 未提供过程时先请求过程
+    input_kind: natural-language
+    prompt: 我这道极限题哪里算错了？
+    should_trigger: true
+    required_behaviors: [请用户提供题目与已完成步骤]
+    forbidden_behaviors: [虚构用户过程, 声称定位到某一步, 估分]
+    blocking_assertions: [不伪造首次错误]
+    quality_checks: [请求内容明确]
+
+  - id: SYN-COR-02
+    purpose: 定位首次等价变形错误并继续
+    input_kind: natural-language
+    prompt: |
+      解方程 √(x+2)=x。我写的是：
+      1. 两边平方得 x+2=x²；
+      2. 解得 x=2 或 x=-1；
+      3. 所以两个都是答案。哪里错了？
+    should_trigger: true
+    required_behaviors: [认可平方后方程求根正确, 定位首次错误为未回代筛增根, 从该处回代, 最终只保留x=2]
+    forbidden_behaviors: [笼统说全错, 从头换一套无关方法, 估分]
+    blocking_assertions: [首次错误定位正确, 最终答案正确]
+    quality_checks: [迁移规则为平方后回代原式]
+
+  - id: SYN-COR-03
+    purpose: 卡住但未出错时从卡点继续
+    input_kind: natural-language
+    prompt: |
+      设 I=∫₀¹ x e^(x²) dx。我令 u=x²，du=2x dx，到这里不会了。
+    should_trigger: true
+    required_behaviors: [明确认可换元正确, 解释上下限同步变换, 从卡点继续, 最终答案为(e-1)/2]
+    forbidden_behaviors: [把卡住说成计算错误, 完全忽略用户路线]
+    blocking_assertions: [换元和结果正确]
+    quality_checks: [说明定积分换元为什么改上下限]
+
+  - id: SYN-COR-04
+    purpose: 非法方法应切换并解释
+    input_kind: natural-language
+    prompt: 求 x→0 时 (1-cos x)/x²。我想直接用洛必达，但我认为分子分母都趋于1，可以吗？
+    should_trigger: true
+    required_behaviors: [定位首次问题为代入判断错误, 说明实际为0比0, 再决定洛必达合法或给自然恒等变形, 完成极限为1/2]
+    forbidden_behaviors: [在错误前提上继续, 只说不可以而不解释]
+    blocking_assertions: [未定式判断与结果正确]
+    quality_checks: [给出下次先代入确认型别的规则]
+
+  - id: SYN-MUL-01
+    purpose: 多题输入只解第一题
+    input_kind: natural-language
+    prompt: 第一题求 lim(x→0) sin x/x；第二题求矩阵 [[1,2],[0,1]] 的行列式。
+    should_trigger: true
+    required_behaviors: [只完整解第一题, 末尾展示第二题简短提示, 询问是否继续]
+    forbidden_behaviors: [同一回答完整解第二题]
+    blocking_assertions: [多题顺序控制正确, 第一题结果为1]
+    quality_checks: [下一题提示可识别]
+
+  - id: SYN-MUL-02
+    purpose: 续题指令复用上一轮上下文
+    input_kind: follow-up
+    context: 上一轮包含两题且只完成第一题；第二题为求矩阵 [[1,2],[0,1]] 的行列式。
+    prompt: 分析第二题。
+    should_trigger: true
+    required_behaviors: [直接复用第二题题干, 完整解答行列式为1]
+    forbidden_behaviors: [要求重新上传, 回答第一题]
+    blocking_assertions: [上下文绑定正确, 结果正确]
+    quality_checks: [不重复无关上下文]
+
+  - id: SYN-LNG-01
+    purpose: 中文题使用中文
+    input_kind: natural-language
+    prompt: 求函数 y=x² 在 x=1 处的导数。
+    should_trigger: true
+    required_behaviors: [使用中文讲解, 最终答案为2]
+    forbidden_behaviors: [无故改用英文]
+    blocking_assertions: [语言正确, 结果正确]
+    quality_checks: [简单题简洁]
+
+  - id: SYN-LNG-02
+    purpose: 英文题使用英文
+    input_kind: natural-language
+    prompt: Find the derivative of f(x)=ln x and state its domain.
+    should_trigger: true
+    required_behaviors: [respond in English, preserve f and x, state x greater than 0, final derivative 1/x]
+    forbidden_behaviors: [switch to Chinese without reason, omit the domain]
+    blocking_assertions: [language and result are correct]
+    quality_checks: [the explanation is concise]
+
+  - id: SYN-LNG-03
+    purpose: 纯公式默认中文
+    input_kind: latex
+    prompt: lim_(x→0) (sin x)/x
+    should_trigger: true
+    required_behaviors: [使用中文讲解, 把公式视为待分析题目, 最终答案为1]
+    forbidden_behaviors: [追问用户要用哪种语言]
+    blocking_assertions: [默认语言和结果正确]
+    quality_checks: [保留原符号]
+
+  - id: SYN-REL-01
+    purpose: 浮点近零不得当成精确非零
+    input_kind: natural-language
+    prompt: Python 算出 sin(π)=1.224646799×10^-16，所以 sin(π) 不等于0，对吗？
+    should_trigger: true
+    required_behaviors: [区分精确数学与浮点近似, 解释舍入误差, 最终确认精确值为0]
+    forbidden_behaviors: [机械服从工具输出]
+    blocking_assertions: [精确结论正确, 冲突原因正确]
+    quality_checks: [给出可执行的精确计算检查规则]
+
+  - id: SYN-REL-02
+    purpose: 工具与推导冲突时必须回退
+    input_kind: natural-language
+    prompt: 我推导 det([[1,2],[3,4]])=-2，但计算器显示2。应该直接信计算器吗？
+    should_trigger: true
+    required_behaviors: [冻结对计算器的采信, 复核输入与2×2行列式公式, 得到-2, 指出计算器输入或读取可能错误]
+    forbidden_behaviors: [任选计算器结果, 隐藏冲突]
+    blocking_assertions: [独立复核正确, 结论为-2]
+    quality_checks: [同时审查工具与推导]
+
+  - id: SYN-REL-03
+    purpose: 无法验证的来源信息不得编造
+    input_kind: natural-language
+    prompt: 这道原创题是不是2024年数学一第10题？题目是求 ∫₀¹ x dx。
+    should_trigger: true
+    required_behaviors: [区分数学求解与来源确认, 不声称题目来自真题, 可独立算出积分为1/2]
+    forbidden_behaviors: [编造年份题号来源, 猜测标准答案或评分点]
+    blocking_assertions: [来源不确定性披露, 数学结果正确]
+    quality_checks: [不因来源未知拒绝可解的数学部分]
+
+  - id: SYN-OUT-01
+    purpose: 选择题逐项分析且合并同类干扰
+    input_kind: natural-language
+    prompt: |
+      已知 f'(0)=0，以下必然成立的是：
+      A. 0是极大值点
+      B. 0是极小值点
+      C. 0是极值点
+      D. 以上都不一定
+    should_trigger: true
+    required_behaviors: [逐项判断, 用反例说明A与B, 标明C与前述同类或独立说明, 正确选项为D]
+    forbidden_behaviors: [只写D, 擅自补二阶导条件, 使用方框]
+    blocking_assertions: [选项结论正确, 条件不足分析正确]
+    quality_checks: [同类干扰不重复长篇]
+
+  - id: SYN-OUT-02
+    purpose: 主推导排版与最终答案契约
+    input_kind: natural-language
+    prompt: 解方程 2x+3=7。
+    should_trigger: true
+    required_behaviors: [复述题目, 给出简洁可检查推导, 使用最终答案小标题, 最终答案x=2]
+    forbidden_behaviors: [用引用块包裹主推导, 使用方框, 附考场精简版]
+    blocking_assertions: [结果正确, 最终答案明确]
+    quality_checks: [不为简单题堆叠空栏目]
+
+  - id: SYN-OUT-03
+    purpose: 没有真实陷阱时省略易错点
+    input_kind: natural-language
+    prompt: 计算 3+5。
+    should_trigger: true
+    required_behaviors: [简洁给出最终答案8]
+    forbidden_behaviors: [硬造易错点, 输出空泛细心建议, 给出第二种无价值方法]
+    blocking_assertions: [结果正确, 无虚假栏目]
+    quality_checks: [长度与复杂度相称]

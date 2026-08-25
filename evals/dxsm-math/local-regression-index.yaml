@@ -1,0 +1,53 @@
+suite: dxsm-math-local-fixed-regression
+version: 1
+source_root: /Users/lyn-77/NOTE/考研题库/数学真题
+source_policy:
+  read_only: true
+  copy_into_repository: false
+  question_text_in_repository: false
+  answer_text_in_repository: false
+status: passed
+notes:
+  - expected_result 指向逐题短结果报告；完整题干与第三方解析不进入仓库。
+  - answer_locator 使用年份与题号定位，不复制第三方解析。
+results_report: results/fixed-regression-report.md
+
+cases:
+  - {id: REG-M1-1987-VIII, paper: math-1, year: 1987, question: "试卷I 八", page: 4, topic: "高数 > 函数与导数 > 不动点存在唯一性证明", answer_locator: "数学一答案 > 1987年 > 试卷I 八", expected_result: "report:REG-M1-1987-VIII", required_methods: ["介值定理与单调性"], verification: "分别检查存在性与唯一性"}
+  - {id: REG-M1-1987-IX, paper: math-1, year: 1987, question: "试卷I 九", page: 4, topic: "线代 > 线性方程组 > 含参数解的分类", answer_locator: "数学一答案 > 1987年 > 试卷I 九", expected_result: "report:REG-M1-1987-IX", required_methods: ["秩与增广矩阵"], verification: "按参数临界值回代方程组"}
+  - {id: REG-M1-1987-X, paper: math-1, year: 1987, question: "试卷I 十", page: 4, topic: "概率 > 独立试验与全概率 > 填空组", answer_locator: "数学一答案 > 1987年 > 试卷I 十", expected_result: "report:REG-M1-1987-X", required_methods: [], verification: "跨页核对三个小题，复核概率和、贝叶斯公式及数字特征"}
+  - {id: REG-M1-2005-01, paper: math-1, year: 2005, question: 1, page: 59, topic: "高数 > 微分方程 > 通解填空", answer_locator: "数学一答案 > 2005年 > 题1", expected_result: "report:REG-M1-2005-01", required_methods: ["一阶线性微分方程"], verification: "把通解代回原方程"}
+  - {id: REG-M1-2005-14, paper: math-1, year: 2005, question: 14, page: 60, topic: "概率统计 > 抽样分布 > 选择题", answer_locator: "数学一答案 > 2005年 > 题14", expected_result: "report:REG-M1-2005-14", required_methods: [], verification: "核对总体条件、自由度与标准化"}
+  - {id: REG-M1-2005-17, paper: math-1, year: 2005, question: 17, page: 60, topic: "复合 > 导数与定积分 > 图形信息转换", answer_locator: "数学一答案 > 2005年 > 题17", expected_result: "report:REG-M1-2005-17", required_methods: ["分段处理与积分"], verification: "对结果求导并核对图形区间"}
+  - {id: REG-M1-2019-01, paper: math-1, year: 2019, question: 1, page: 110, topic: "高数 > 函数极限 > 无穷小阶数选择", answer_locator: "数学一答案 > 2019年 > 题1", expected_result: "report:REG-M1-2019-01", required_methods: ["泰勒展开"], verification: "展开到首次不抵消项"}
+  - {id: REG-M1-2019-05, paper: math-1, year: 2019, question: 5, page: 110, topic: "线代 > 实对称矩阵 > 二次型规范形", answer_locator: "数学一答案 > 2019年 > 题5", expected_result: "report:REG-M1-2019-05", required_methods: ["特征值与正交变换"], verification: "迹、行列式与特征值关系复核"}
+  - {id: REG-M1-2019-08, paper: math-1, year: 2019, question: 8, page: 110, topic: "概率 > 正态分布 > 差的分布", answer_locator: "数学一答案 > 2019年 > 题8", expected_result: "report:REG-M1-2019-08", required_methods: [], verification: "由独立性计算差的均值与方差"}
+  - {id: REG-M1-2026-12, paper: math-1, year: 2026, question: 12, page: 136, topic: "高数 > 函数极限 > 对数与三角复合", answer_locator: "数学一答案 > 2026年 > 题12", expected_result: "report:REG-M1-2026-12", required_methods: ["泰勒展开或等价无穷小"], verification: "不同展开方式交叉验证"}
+  - {id: REG-M1-2026-17, paper: math-1, year: 2026, question: 17, page: 136, topic: "高数 > 多元函数 > 极值", answer_locator: "数学一答案 > 2026年 > 题17", expected_result: "report:REG-M1-2026-17", required_methods: ["驻点与二阶条件"], verification: "梯度与Hessian独立复核"}
+  - {id: REG-M1-2026-20, paper: math-1, year: 2026, question: 20, page: 137, topic: "高数 > 中值定理 > 二阶导数存在性证明", answer_locator: "数学一答案 > 2026年 > 题20", expected_result: "report:REG-M1-2026-20", required_methods: ["构造辅助函数与中值定理"], verification: "检查每次定理调用的区间条件"}
+
+  - {id: REG-M2-1987-I-02, paper: math-2, year: 1987, question: "一(2)", page: 3, topic: "高数 > 导数应用 > 切线与法线", answer_locator: "数学二答案 > 1987年 > 一(2)", expected_result: "report:REG-M2-1987-I-02", required_methods: [], verification: "斜率与点坐标回代直线"}
+  - {id: REG-M2-1987-VI, paper: math-2, year: 1987, question: "六", page: 3, topic: "高数 > 导数应用 > 单调性与极值证明", answer_locator: "数学二答案 > 1987年 > 六", expected_result: "report:REG-M2-1987-VI", required_methods: ["拉格朗日中值定理与二阶条件"], verification: "分别检查两个证明命题"}
+  - {id: REG-M2-1987-X, paper: math-2, year: 1987, question: "十", page: 4, topic: "高数 > 定积分应用 > 最小面积", answer_locator: "数学二答案 > 1987年 > 十", expected_result: "report:REG-M2-1987-X", required_methods: ["面积函数与极值"], verification: "边界与驻点比较"}
+  - {id: REG-M2-2005-11, paper: math-2, year: 2005, question: 11, page: 47, topic: "线代 > 特征值与特征向量 > 线性无关条件", answer_locator: "数学二答案 > 2005年 > 题11", expected_result: "report:REG-M2-2005-11", required_methods: [], verification: "按不同特征值定理检查充要方向"}
+  - {id: REG-M2-2005-15, paper: math-2, year: 2005, question: 15, page: 47, topic: "高数 > 极限与积分 > 变上限积分比值", answer_locator: "数学二答案 > 2005年 > 题15", expected_result: "report:REG-M2-2005-15", required_methods: ["洛必达或积分中值"], verification: "另一种局部展开复核"}
+  - {id: REG-M2-2005-16, paper: math-2, year: 2005, question: 16, page: 47, topic: "复合 > 平面图形面积 > 参数曲线比较", answer_locator: "数学二答案 > 2005年 > 题16", expected_result: "report:REG-M2-2005-16", required_methods: ["定积分与图形分割"], verification: "数值积分抽查面积关系"}
+  - {id: REG-M2-2019-18, paper: math-2, year: 2019, question: 18, page: 98, topic: "高数 > 二重积分 > 区域与换元", answer_locator: "数学二答案 > 2019年 > 题18", expected_result: "report:REG-M2-2019-18", required_methods: ["区域分割或坐标变换"], verification: "独立交换积分次序"}
+  - {id: REG-M2-2019-21, paper: math-2, year: 2019, question: 21, page: 99, topic: "高数 > 中值定理 > 存在性证明", answer_locator: "数学二答案 > 2019年 > 题21", expected_result: "report:REG-M2-2019-21", required_methods: ["积分条件与中值定理"], verification: "分别验证两个存在性结论"}
+  - {id: REG-M2-2019-22, paper: math-2, year: 2019, question: 22, page: 99, topic: "线代 > 向量组 > 等价与线性表示", answer_locator: "数学二答案 > 2019年 > 题22", expected_result: "report:REG-M2-2019-22", required_methods: ["秩或行变换"], verification: "代入所求参数并复核表示"}
+  - {id: REG-M2-2026-11, paper: math-2, year: 2026, question: 11, page: 129, topic: "高数 > 反常积分 > 参数取值", answer_locator: "数学二答案 > 2026年 > 题11", expected_result: "report:REG-M2-2026-11", required_methods: ["敛散性比较"], verification: "端点渐近阶独立检查"}
+  - {id: REG-M2-2026-19, paper: math-2, year: 2026, question: 19, page: 129, topic: "高数 > 多元函数 > 极值", answer_locator: "数学二答案 > 2026年 > 题19", expected_result: "report:REG-M2-2026-19", required_methods: ["驻点与Hessian"], verification: "符号计算或直接代入复核"}
+  - {id: REG-M2-2026-22, paper: math-2, year: 2026, question: 22, page: 130, topic: "线代 > 向量组与矩阵幂 > 极大无关组", answer_locator: "数学二答案 > 2026年 > 题22", expected_result: "report:REG-M2-2026-22", required_methods: ["秩与矩阵分解"], verification: "矩阵乘法复核H与A的幂"}
+
+  - {id: REG-M3-1987-III, paper: math-3, year: 1987, question: "三", page: 4, topic: "高数 > 极限与导数 > 计算题组", answer_locator: "数学三答案 > 1987年 > 三", expected_result: "report:REG-M3-1987-III", required_methods: [], verification: "逐小题回代与求导复核"}
+  - {id: REG-M3-1987-IX, paper: math-3, year: 1987, question: "九", page: 4, topic: "线代 > 矩阵方程 > 求矩阵", answer_locator: "数学三答案 > 1987年 > 九", expected_result: "report:REG-M3-1987-IX", required_methods: ["矩阵代数"], verification: "代回原矩阵等式"}
+  - {id: REG-M3-1987-XI, paper: math-3, year: 1987, question: "十一", page: 5, topic: "概率 > 随机变量函数 > 分布与期望", answer_locator: "数学三答案 > 1987年 > 十一", expected_result: "report:REG-M3-1987-XI", required_methods: ["分布变换"], verification: "归一性与期望积分复核"}
+  - {id: REG-M3-2005-01, paper: math-3, year: 2005, question: 1, page: 70, topic: "高数 > 函数极限 > 填空", answer_locator: "数学三答案 > 2005年 > 题1", expected_result: "report:REG-M3-2005-01", required_methods: ["等价无穷小或泰勒展开"], verification: "不同展开交叉验证"}
+  - {id: REG-M3-2005-06, paper: math-3, year: 2005, question: 6, page: 70, topic: "概率 > 二维离散分布 > 独立性约束", answer_locator: "数学三答案 > 2005年 > 题6", expected_result: "report:REG-M3-2005-06", required_methods: ["联合概率表"], verification: "总概率与独立性等式复核"}
+  - {id: REG-M3-2005-22, paper: math-3, year: 2005, question: 22, page: 75, topic: "复合 > 分段密度与随机变量变换 > 二维分布", answer_locator: "数学三答案 > 2005年 > 题22", expected_result: "report:REG-M3-2005-22", required_methods: ["分区积分与变量变换"], verification: "边缘密度归一性及指定值复核"}
+  - {id: REG-M3-2019-01, paper: math-3, year: 2019, question: 1, page: 122, topic: "高数 > 函数极限 > 无穷小阶数选择", answer_locator: "数学三答案 > 2019年 > 题1", expected_result: "report:REG-M3-2019-01", required_methods: ["泰勒展开"], verification: "展开到首次不抵消项"}
+  - {id: REG-M3-2019-05, paper: math-3, year: 2019, question: 5, page: 122, topic: "线代 > 伴随矩阵 > 秩", answer_locator: "数学三答案 > 2019年 > 题5", expected_result: "report:REG-M3-2019-05", required_methods: ["伴随矩阵秩定理"], verification: "按原矩阵秩分支检查"}
+  - {id: REG-M3-2019-08, paper: math-3, year: 2019, question: 8, page: 122, topic: "概率 > 正态分布 > 差的分布", answer_locator: "数学三答案 > 2019年 > 题8", expected_result: "report:REG-M3-2019-08", required_methods: [], verification: "由独立性计算差的均值与方差"}
+  - {id: REG-M3-2026-11, paper: math-3, year: 2026, question: 11, page: 147, topic: "高数 > 定积分 > 绝对值与分段", answer_locator: "数学三答案 > 2026年 > 题11", expected_result: "report:REG-M3-2026-11", required_methods: ["分段积分"], verification: "按符号变化点拆分并数值抽查"}
+  - {id: REG-M3-2026-13, paper: math-3, year: 2026, question: 13, page: 147, topic: "高数 > 反常积分 > 参数取值", answer_locator: "数学三答案 > 2026年 > 题13", expected_result: "report:REG-M3-2026-13", required_methods: ["端点渐近比较"], verification: "分别检查两个反常端点"}
+  - {id: REG-M3-2026-19, paper: math-3, year: 2026, question: 19, page: 147, topic: "高数 > 多元函数 > 极值", answer_locator: "数学三答案 > 2026年 > 题19", expected_result: "report:REG-M3-2026-19", required_methods: ["驻点与Hessian"], verification: "符号计算或直接代入复核"}

@@ -64,12 +64,12 @@
 | 不自动推送 | PKG-005、RELS-003 | 08 | git 状态与远程检查 |
 | 忽略本地 Obsidian 状态 | PKG-006 | 08 | `.gitignore` 与 Git 文件清单 |
 
-## 2. 已明确不做
+## 2. 已明确不做或受控执行
 
 | 项目 | 状态 | 理由 |
 |---|---|---|
 | 自动安装 Skill | 禁止 | 用户要求只保存仓库 |
-| 自动推送 GitHub | 未授权 | 远程仅已配置 |
+| GitHub 推送与发布 | 仅 `v1.0.0` 已授权 | 用户明确批准本次 commit、push、tag 与 Release |
 | API Key 或云端批量测试 | 禁止 | Agent-only |
 | 真题 PDF 进 Git | 禁止 | 体积与版权 |
 | 估分与得分点 | 禁止 | 无权威细则，易产生无依据结论 |
@@ -77,16 +77,24 @@
 | Skill 内 README | 禁止 | 根 README 统一维护 |
 | 客户端专用安装目录 | 不提供 | 使用通用 Agent Skills 路径 |
 
-## 3. 当前未完成但已定义
+## 3. 当前实现追踪
 
-- `skills/dxsm-math/` 尚未创建；
-- 根 `README.md` 尚未创建；
-- `LICENSE` 尚未创建；
-- 考纲快照尚未正式整理；
-- 合成测试和本地真题索引尚未创建；
-- Skill 结构与行为测试尚未运行；
-- 实现方案仍等待用户明确批准；
-- 未执行 Git 提交或推送。
+| 交付对象 | 对应规范 | 当前证据 | 状态 |
+|---|---|---|---|
+| Skill 入口与触发边界 | GOV、SCP、TRG、RUN、OUT | `skills/dxsm-math/SKILL.md`、`evals/dxsm-math/results/synthetic-report.md` | 静态映射与 24 个合成行为用例通过 |
+| 考纲范围与年度回退 | SYL 全部 | `skills/dxsm-math/references/syllabus-scope.md` | 已创建；正式内容快照截止 2022，后续年度变化为 unknown |
+| 题型分层定位 | RUN-R4、OUT-T | `skills/dxsm-math/references/topic-taxonomy.md`、合成与固定回归报告 | 合成行为与 36 道固定回归验证通过 |
+| 可靠性、工具与冲突回退 | REL、TOOL、VIS | `skills/dxsm-math/references/reliability-rules.md`、合成、固定回归与未见题报告 | 合成冲突场景、固定真题与未见题独立复核均通过 |
+| 根 README 与安装说明 | DOC、INS、DEP、COMP | `README.md` | 静态一致性校验通过 |
+| MIT License | PKG-004 | `LICENSE` | MIT 文本校验通过 |
+| 公开合成测试 | TST 3.1、GATE-004~012 | `evals/dxsm-math/synthetic-cases.yaml`、`evals/dxsm-math/results/synthetic-report.md` | 24/24 通过，阻断失败 0，非阻断缺陷 0 |
+| 固定真题回归 | TST-PDF、抽样矩阵 | `evals/dxsm-math/local-regression-index.yaml`、`evals/dxsm-math/results/fixed-regression-report.md` | 36/36 通过，各科 12/12，阻断失败 0 |
+| 未见题 | TST-HOLD | `evals/dxsm-math/local-holdout-index.yaml`、`evals/dxsm-math/results/holdout-report.md` | 固定回归通过后解封；12/12 通过，阻断失败 0，未用于调优 |
+| Skill 结构校验 | TST 11 | `evals/dxsm-math/results/static-validation.md` | 等价 frontmatter/目录、链接与引用深度检查通过；官方 quick validator 缺 PyYAML，`skills-ref` 不可用 |
+| 行为与数学验收 | TST 7~10、GATE-001~012 | 合成报告、固定回归报告、未见题报告 | 合成 24/24、固定回归 36/36、未见题 12/12 均通过；阻断失败 0 |
+| 安装、提交、推送与发布 | RELS-001~003 | 工作区、Git 状态与 GitHub Release | 自动安装未执行；本次 `v1.0.0` 的 commit、push、tag 与 Release 已获用户明确授权 |
+
+用户已于 2026-08-25 明确要求开工，实施门已打开。当前已完成实现、静态校验、24 个合成行为用例、36 道固定真题回归和 12 道未见题验收；`dxsm-math` v1.0.0 本地验收完成。用户已明确批准本次提交、推送、annotated tag 与 GitHub Release；未授权自动安装或英语、408 实现。
 
 ## 4. 冲突审计结论
 

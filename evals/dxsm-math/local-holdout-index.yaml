@@ -1,0 +1,33 @@
+suite: dxsm-math-local-holdout
+version: 1
+source_root: /Users/lyn-77/NOTE/考研题库/数学真题
+selected_at: 2026-08-25
+selected_after_skill_draft: true
+status: passed
+policy:
+  use_for_instruction_tuning: false
+  run_only_after_fixed_regression_passes: true
+  read_only_source: true
+  copy_question_or_answer_into_repository: false
+notes:
+  - 本文件只保存定位和验收维度，不保存题干、答案或解析。
+  - 执行前不得读取答案；先独立求解，再按 answer_locator 复核。
+  - 固定回归 36/36 通过后解封；12 道题均先完成原页核验与独立推导，再读取答案册复核。
+  - 未见题 12/12 通过，阻断失败 0，非阻断缺陷 0；expected_result 指向逐题短结果报告。
+results_report: results/holdout-report.md
+
+cases:
+  - {id: HOLD-M1-2025-04, paper: math-1, year: 2025, question: 4, page: 132, topic: "高数 > 二重积分 > 交换积分次序", answer_locator: "数学一答案 > 2025年 > 题4", expected_result: "report:HOLD-M1-2025-04", required_methods: [], verification: "独立画出或描述积分区域后复核"}
+  - {id: HOLD-M1-2025-07, paper: math-1, year: 2025, question: 7, page: 132, topic: "线代 > 矩阵秩 > 命题判断", answer_locator: "数学一答案 > 2025年 > 题7", expected_result: "report:HOLD-M1-2025-07", required_methods: [], verification: "逐条构造证明或反例"}
+  - {id: HOLD-M1-2025-10, paper: math-1, year: 2025, question: 10, page: 133, topic: "概率统计 > 假设检验 > 已知方差的单侧均值检验", answer_locator: "数学一答案 > 2025年 > 题10", expected_result: "report:HOLD-M1-2025-10", required_methods: [], verification: "核对统计量、拒绝域方向、分位数与样本量"}
+  - {id: HOLD-M1-2025-18, paper: math-1, year: 2025, question: 18, page: 134, topic: "高数 > 多元复合函数 > 偏微分方程", answer_locator: "数学一答案 > 2025年 > 题18", expected_result: "report:HOLD-M1-2025-18", required_methods: ["链式法则"], verification: "符号求导独立复核"}
+
+  - {id: HOLD-M2-2025-04, paper: math-2, year: 2025, question: 4, page: 125, topic: "高数 > 无穷小比较 > 高阶关系命题判断", answer_locator: "数学二答案 > 2025年 > 题4", expected_result: "report:HOLD-M2-2025-04", required_methods: [], verification: "逐项用无穷小定义与等价关系检查"}
+  - {id: HOLD-M2-2025-08, paper: math-2, year: 2025, question: 8, page: 126, topic: "线代 > 二次型 > 合同变换与惯性指数", answer_locator: "数学二答案 > 2025年 > 题8", expected_result: "report:HOLD-M2-2025-08", required_methods: [], verification: "用分块二次型与惯性定理逐项检查"}
+  - {id: HOLD-M2-2025-12, paper: math-2, year: 2025, question: 12, page: 126, topic: "高数 > 函数渐近性 > 斜渐近线", answer_locator: "数学二答案 > 2025年 > 题12", expected_result: "report:HOLD-M2-2025-12", required_methods: [], verification: "分别求斜率与截距并检查余项趋零"}
+  - {id: HOLD-M2-2025-18, paper: math-2, year: 2025, question: 18, page: 127, topic: "高数 > 极限与导数 > 由极限确定导数", answer_locator: "数学二答案 > 2025年 > 题18", expected_result: "report:HOLD-M2-2025-18", required_methods: [], verification: "展开分母与指数项，再按导数定义复核"}
+
+  - {id: HOLD-M3-2025-04, paper: math-3, year: 2025, question: 4, page: 143, topic: "高数 > 二重积分 > 积分次序与被积函数", answer_locator: "数学三答案 > 2025年 > 题4", expected_result: "report:HOLD-M3-2025-04", required_methods: [], verification: "先确定积分区域，再交换次序复核"}
+  - {id: HOLD-M3-2025-05, paper: math-3, year: 2025, question: 5, page: 143, topic: "线代 > 矩阵秩 > 线性方程组可解性", answer_locator: "数学三答案 > 2025年 > 题5", expected_result: "report:HOLD-M3-2025-05", required_methods: [], verification: "由非零最高阶子式和满行秩检查可解性"}
+  - {id: HOLD-M3-2025-12, paper: math-3, year: 2025, question: 12, page: 144, topic: "高数 > 反常积分 > 参数方程", answer_locator: "数学三答案 > 2025年 > 题12", expected_result: "report:HOLD-M3-2025-12", required_methods: [], verification: "积分后回代参数并检查定义域"}
+  - {id: HOLD-M3-2025-22, paper: math-3, year: 2025, question: 22, page: 145, topic: "概率统计 > 泊松分布 > 保险赔付复合模型", answer_locator: "数学三答案 > 2025年 > 题22", expected_result: "report:HOLD-M3-2025-22", required_methods: [], verification: "先独立推导赔付概率与期望，再用泊松稀疏化复核"}
