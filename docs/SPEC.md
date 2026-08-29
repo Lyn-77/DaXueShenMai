@@ -2,7 +2,7 @@
 
 - 状态：需求冻结，`dxsm-math` v1.0.0 本地实现与验收完成
 - 规范版本：1.0
-- 最后更新：2026-08-25
+- 最后更新：2026-08-29
 - 适用仓库：`https://github.com/Lyn-77/DaXueShenMai`
 
 ## 1. 文档目的
@@ -46,8 +46,9 @@
 - 新需求必须先判断是否与现有要求冲突，再分配唯一编号。
 - 冲突要求必须由用户裁决；裁决前保持待确认，不得实现。
 - 用户纠正、可靠性事故和测试暴露的问题必须进入 `docs/project/lessons.md`。
-- 阶段进度必须同步到 `docs/project/progress.md`。
+- 任务进度必须遵循 `AGENTS.md` 第 4.6 节的检查点协议：每完成一个可验证步骤就立即同步到 `docs/project/progress.md`，不得只在阶段结束时补记。
+- 可控或可预见的上下文压缩前，必须先同步 `docs/project/progress.md` 与 `docs/spec/99-context-capsule.md`，复读确认并核对工作区后才能压缩。
 
 ## 5. 当前实施门
 
-用户已于 2026-08-25 明确批准开工，实施门已经打开。`skills/dxsm-math/`、README、LICENSE 和测试资产已经创建，结构、合成行为、36 道固定回归与 12 道未见题验收均已通过。用户已明确批准本次 `v1.0.0` 的提交、推送、tag 与 GitHub Release；英语或 408 Skill 的实现及自动安装仍未获授权。
+用户已于 2026-08-25 明确批准开工，实施门已经打开。`skills/dxsm-math/`、README、LICENSE 和测试资产已经创建，结构、合成行为、36 道固定回归与 12 道未见题验收均已通过。用户已人工审核并批准删除“验证”板块后的 `v1.0.1` Release Notes，现已授权自动完成提交、push、tag 与 GitHub Release；英语或 408 Skill 的实现及自动安装仍未获授权。

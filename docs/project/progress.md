@@ -2,7 +2,44 @@
 
 `docs/project/progress.md` 是项目进度的唯一事实记录。
 
-最后更新：2026-08-25
+最后更新：2026-08-29
+
+## [Checkpoint]
+
+本节是当前任务的可恢复检查点。任务每完成一个可验证步骤后立即更新；不得等到整个阶段结束才补记。
+
+- 当前任务：准备并发布 `v1.0.1` 维护版。
+- 用户目标：自动生成 Release Notes，人工审核通过后自动提交、push、创建 `v1.0.1` tag 并发布 GitHub Release。
+- 授权范围：允许为本次 `v1.0.1` 更新发布状态文档，并在 Release Notes 获用户明确批准后执行 Git 提交、push、annotated tag 和 GitHub Release；不修改 Skill 行为、测试资产或安装状态。
+- 最近完成步骤：提交前验证通过，并已使用批准的提交信息创建本地 `v1.0.1` 发布提交；提交范围仅包含本任务的 7 个规范或活文档。
+- 当前步骤：执行外部发布：push `main`，创建并 push `v1.0.1` annotated tag，再用批准正文创建 GitHub Release。
+- 已有证据：工作目录为 `/Users/lyn-77/CODE/DaXueShenMai`；`origin` 指向 `https://github.com/Lyn-77/DaXueShenMai.git`；目标 tag `v1.0.1` 在本地不存在。
+- 本任务涉及文件：`AGENTS.md`、`docs/SPEC.md`、`docs/project/lessons.md`、`docs/project/progress.md`、`docs/spec/08-packaging-installation.md`、`docs/spec/09-traceability.md`、`docs/spec/99-context-capsule.md`。
+- 下一动作：将本检查点纳入同一发布提交后 push `main`；push 成功后创建并推送 tag，再创建 GitHub Release；任一步骤失败时从远程实际状态继续，不重复已成功动作。
+- 阻断项：无；Release Notes 人工审批门已通过。
+- 外部动作：本地发布提交已创建；尚未 push、创建 `v1.0.1` tag 或发布 GitHub Release；未安装任何内容。
+- 恢复指令：按 `AGENTS.md` 开工顺序读取文档并核对 Git diff；若 Release Notes 尚未获批，只能继续准备或展示预览，不得执行发布；获批后从提交前验证开始继续。
+
+### 已批准的 `v1.0.1` 发布内容
+
+提交信息：`docs: add resumable task checkpoints and release gate`
+
+Release 标题：`v1.0.1`
+
+Release Notes：
+
+```markdown
+# DaXueShenMai v1.0.1
+
+本次维护版完善了仓库级任务恢复与发布流程，不改变 `dxsm-math` 的解题行为、安装方式或依赖。
+
+## 更新内容
+
+- 新增结构化任务检查点：每完成一个可验证步骤，立即记录目标、授权范围、验证证据、修改文件、下一动作、阻断项和恢复指令。
+- 新增上下文压缩保护：可控或可预见的压缩前先同步并复读进度与上下文胶囊，再核对 Git 状态；无预警压缩后先完成恢复审计。
+- 修正上下文胶囊可能固化短期 Git 状态的问题，恢复时以实际文件和可验证的 Git 状态为准。
+- 完善发布门：版本发布必须具有明确授权；要求人工审核 Release Notes 时，批准前不执行提交、push、tag 或 GitHub Release。
+```
 
 ## [Done]
 
@@ -98,10 +135,11 @@
 - `dxsm-math` v1.0.0 本地实现与验收完成；规范版本已从 `1.0-draft` 冻结为 `1.0`。
 - 用户已明确批准本次 `v1.0.0` 的 Git 提交、远程推送、annotated tag 与 GitHub Release；发布说明采用用户最终批准的版本，不包含内部工具限制段。
 - 没有自动安装 Skill，也没有创建英语或 408 实现。
+- 建立仓库级断点续作协议：每完成一个可验证步骤即同步 `[Checkpoint]` 与受影响文档；可控或可预见的上下文压缩前必须先同步并复读进度与上下文胶囊，再核对 Git 状态；无预警压缩后先恢复审计再继续工作。
 
 ## [Doing]
 
-- 无。`dxsm-math` v1 当前没有正在执行的本地实现或验收事项。
+- `v1.0.1` Release Notes 已按用户要求删除“验证”板块并获批准，正在执行发布。
 
 ## [Next]
 
