@@ -10,7 +10,7 @@
 - `dxsm-english`
 - `dxsm-408`
 
-v1 只实现 `dxsm-math`。用户已明确打开实施门；当前已创建 Skill、根交付文档和测试资产，结构校验、24 个合成用例、36 道固定真题回归与 12 道未见题均已通过。当前正在发布 `v1.0.1` 维护版：用户已批准删除“验证”板块后的 Release Notes，并授权自动提交、push、annotated tag 与 GitHub Release。
+v1 只实现 `dxsm-math`。用户已明确打开实施门；当前已创建 Skill、根交付文档和测试资产，结构校验、24 个合成用例、36 道固定真题回归与 12 道未见题均已通过。`v1.0.1` 维护版已使用用户批准且删除“验证”板块后的 Release Notes 完成提交、push、annotated tag 与 GitHub Release。
 
 ## 2. 当前状态
 
@@ -33,7 +33,7 @@ v1 只实现 `dxsm-math`。用户已明确打开实施门；当前已创建 Skil
 - 根 `.gitignore` 忽略 `.obsidian/`；Obsidian 本地状态不进入版本控制。
 - Skill 未自动安装；本次 `v1.0.0` 的提交、推送、tag 与 Release 已获用户明确授权，外部发布结果以 GitHub 为准。
 - 已完成逐步任务检查点与上下文压缩保护协议：`docs/project/progress.md` 提供 `[Checkpoint]`，`AGENTS.md`、`docs/SPEC.md` 与本胶囊规则一致；`git diff --check`、24 个 Markdown 文件本地链接、规则关键词和 Git 差异检查均已通过。
-- `v1.0.1` Release Notes 已按用户要求删除“验证”板块并获得批准；发布阻断已解除，下一步是提交前验证，然后自动提交、push、创建 `v1.0.1` annotated tag 与 GitHub Release 并核验远程结果。
+- `v1.0.1` 发布提交为 `d164458`；`origin/main`、annotated tag `v1.0.1` 与 GitHub Release 已核验，Release 不是 draft 或 prerelease，正文没有“验证”板块。Release URL：`https://github.com/Lyn-77/DaXueShenMai/releases/tag/v1.0.1`。
 
 ## 3. 产品一句话
 
@@ -130,7 +130,7 @@ v1 只实现 `dxsm-math`。用户已明确打开实施门；当前已创建 Skil
 2. 核对 Git 工作区与 `[Checkpoint]`，保留所有用户已有修改和未跟踪文件，不得依赖胶囊中的历史状态猜测哪些文件仍未跟踪；
 3. 不重复执行已经通过的 24 个合成用例、36 道固定回归或 12 道未见题，除非后续修改触发相应回归要求；
 4. 若用户要求修改 v1，先定位适用规范编号，并按“失败用例 → 同类用例 → 固定回归 → 必要时新未见题”的顺序验证；
-5. 用户已批准删除“验证”板块后的 `v1.0.1` Release Notes，并授权提交、push、annotated tag 与 GitHub Release；恢复时根据 `[Checkpoint]` 和远程状态从尚未完成的发布步骤继续；
+5. `v1.0.1` 已完成发布，该一次性发布授权已经执行完毕；后续版本的提交、push、tag 或 Release 仍需新的明确授权；
 6. 英语与 408 属于后续版本，必须先分别完成需求与方案，不得直接生成占位实现。
 
 ## 11.1 任务检查点与压缩保护

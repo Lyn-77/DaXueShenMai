@@ -51,4 +51,4 @@
 
 ## 5. 当前实施门
 
-用户已于 2026-08-25 明确批准开工，实施门已经打开。`skills/dxsm-math/`、README、LICENSE 和测试资产已经创建，结构、合成行为、36 道固定回归与 12 道未见题验收均已通过。用户已人工审核并批准删除“验证”板块后的 `v1.0.1` Release Notes，现已授权自动完成提交、push、tag 与 GitHub Release；英语或 408 Skill 的实现及自动安装仍未获授权。
+用户已于 2026-08-25 明确批准开工，实施门已经打开。`skills/dxsm-math/`、README、LICENSE 和测试资产已经创建，结构、合成行为、36 道固定回归与 12 道未见题验收均已通过。`v1.0.1` 已使用用户批准且删除“验证”板块后的 Release Notes 完成提交、push、annotated tag 与 GitHub Release；后续版本仍需新的明确发布授权，英语或 408 Skill 的实现及自动安装仍未获授权。

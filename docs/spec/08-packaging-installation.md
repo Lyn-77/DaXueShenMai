@@ -160,4 +160,4 @@ README 必须提供可复制提示词：
 - RELS-003 MUST NOT：没有用户针对当前版本的明确发布授权时，自动提交、推送、创建 tag 或发布 GitHub Release。
 - RELS-004 MUST：交付说明列出已创建文件、校验结果、测试结果和已知非阻断问题。
 - RELS-005 MUST：用户要求人工审核 Release Notes 时，必须先展示完整预览；只有用户明确批准该版本内容后，才可执行提交、push、tag 和 GitHub Release。
-- RELS-006 MUST：本次 `v1.0.1` 已获自动发布授权；用户已批准删除“验证”板块后的 Release Notes，必须按批准正文自动完成提交、push、annotated tag 与 GitHub Release，并验证远程结果。
+- RELS-006 MUST：本次 `v1.0.1` 已按用户批准且删除“验证”板块后的 Release Notes 完成提交、push、annotated tag 与 GitHub Release，并已验证远程结果；该一次性授权不延续到后续版本。

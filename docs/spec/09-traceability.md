@@ -70,7 +70,7 @@
 | 项目 | 状态 | 理由 |
 |---|---|---|
 | 自动安装 Skill | 禁止 | 用户要求只保存仓库 |
-| GitHub 推送与发布 | `v1.0.1` Release Notes 已批准，发布获授权 | 用户批准删除“验证”板块后的正文并要求执行 |
+| GitHub 推送与发布 | `v1.0.1` 已发布 | 用户批准删除“验证”板块后的正文；提交、push、tag 与 Release 已核验 |
 | API Key 或云端批量测试 | 禁止 | Agent-only |
 | 真题 PDF 进 Git | 禁止 | 体积与版权 |
 | 估分与得分点 | 禁止 | 无权威细则，易产生无依据结论 |
@@ -93,9 +93,9 @@
 | 未见题 | TST-HOLD | `evals/dxsm-math/local-holdout-index.yaml`、`evals/dxsm-math/results/holdout-report.md` | 固定回归通过后解封；12/12 通过，阻断失败 0，未用于调优 |
 | Skill 结构校验 | TST 11 | `evals/dxsm-math/results/static-validation.md` | 等价 frontmatter/目录、链接与引用深度检查通过；官方 quick validator 缺 PyYAML，`skills-ref` 不可用 |
 | 行为与数学验收 | TST 7~10、GATE-001~012 | 合成报告、固定回归报告、未见题报告 | 合成 24/24、固定回归 36/36、未见题 12/12 均通过；阻断失败 0 |
-| 安装、提交、推送与发布 | RELS-001~006 | 工作区、审批记录、Git 状态与 GitHub Release | 自动安装未执行；`v1.0.1` Release Notes 已批准，正在执行发布 |
+| 安装、提交、推送与发布 | RELS-001~006 | 工作区、审批记录、Git 状态与 GitHub Release | 自动安装未执行；`v1.0.1` 提交、push、annotated tag 与 GitHub Release 已完成并核验 |
 
-用户已于 2026-08-25 明确要求开工，实施门已打开。当前已完成实现、静态校验、24 个合成行为用例、36 道固定真题回归和 12 道未见题验收；`dxsm-math` v1.0.0 本地验收完成。用户已批准删除“验证”板块后的 `v1.0.1` Release Notes 并授权执行发布；未授权自动安装或英语、408 实现。
+用户已于 2026-08-25 明确要求开工，实施门已打开。当前已完成实现、静态校验、24 个合成行为用例、36 道固定真题回归和 12 道未见题验收；`v1.0.1` 已使用用户批准且删除“验证”板块后的 Release Notes 完成发布。未授权自动安装或英语、408 实现，后续版本发布仍需新的明确授权。
 
 ## 4. 冲突审计结论
 
